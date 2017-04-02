@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+    <div class="page_title" id="page_title">
+        <h1>Блог</h1>
+    </div>
+    {% for blog in blogs %}
+        <article>
+            <h2>{{ blog.title }}</h2>
+            <div class="container blog-container">
+                <div class="field field-body">
+                    {{ blog.body }}
+                </div>
+                <div class="field field-created">
+                    {{ blog.created|date("d-m-Y") }}
+                </div>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock %}
