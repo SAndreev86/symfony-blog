@@ -105,26 +105,23 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // homepage
+        // blogger_blog_homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'homepage');
+                return $this->redirect($pathinfo.'/', 'blogger_blog_homepage');
             }
 
-            return array (  '_controller' => 'BlogBundle\\Controller\\BlogController::homepageAction',  '_route' => 'homepage',);
+            return array (  '_controller' => 'Blogger\\BlogBundle\\Controller\\PageController::indexAction',  '_route' => 'blogger_blog_homepage',);
         }
 
-        if (0 === strpos($pathinfo, '/blog')) {
-            // blog_teaser
-            if ($pathinfo === '/blog') {
-                return array (  '_controller' => 'BlogBundle\\Controller\\BlogController::teaserAction',  '_route' => 'blog_teaser',);
-            }
+        // blogger_blog_about
+        if ($pathinfo === '/about') {
+            return array (  '_controller' => 'Blogger\\BlogBundle\\Controller\\PageController::aboutAction',  '_route' => 'blogger_blog_about',);
+        }
 
-            // blog_view
-            if (preg_match('#^/blog/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'blog_view')), array (  '_controller' => 'BlogBundle\\Controller\\BlogController::blogViewAction',));
-            }
-
+        // blogger_blog_contact
+        if ($pathinfo === '/contact') {
+            return array (  '_controller' => 'Blogger\\BlogBundle\\Controller\\PageController::contactAction',  '_route' => 'blogger_blog_contact',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();
