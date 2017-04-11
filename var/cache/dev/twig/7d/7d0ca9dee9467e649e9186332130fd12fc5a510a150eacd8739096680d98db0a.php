@@ -15,11 +15,11 @@ class __TwigTemplate_21d62f404c003bbd72f63b94f87a9dd3b7e2cb8592d6fbfdeb0b9d7c076
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_a7bde325b847478588b8d4413bdfc183effeac22d6d364ba95f63d03dd132a2e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
-        $__internal_a7bde325b847478588b8d4413bdfc183effeac22d6d364ba95f63d03dd132a2e->enter($__internal_a7bde325b847478588b8d4413bdfc183effeac22d6d364ba95f63d03dd132a2e_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "BloggerBlogBundle:Comment:form.html.twig"));
+        $__internal_a6afab9ceadb9fb702271a1cb81b1935b3844ca530dfdbceced1f37d97843d83 = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
+        $__internal_a6afab9ceadb9fb702271a1cb81b1935b3844ca530dfdbceced1f37d97843d83->enter($__internal_a6afab9ceadb9fb702271a1cb81b1935b3844ca530dfdbceced1f37d97843d83_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "BloggerBlogBundle:Comment:form.html.twig"));
 
-        $__internal_3418f22e3f17f66c954be34ee7ac861ada55f58590f49334b0c84779c146e09a = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_3418f22e3f17f66c954be34ee7ac861ada55f58590f49334b0c84779c146e09a->enter($__internal_3418f22e3f17f66c954be34ee7ac861ada55f58590f49334b0c84779c146e09a_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "BloggerBlogBundle:Comment:form.html.twig"));
+        $__internal_7c2c975d4c92fbc046ddf86c84b061feec7ed09e761dbb31355f9a50f86fbf2b = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_7c2c975d4c92fbc046ddf86c84b061feec7ed09e761dbb31355f9a50f86fbf2b->enter($__internal_7c2c975d4c92fbc046ddf86c84b061feec7ed09e761dbb31355f9a50f86fbf2b_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "BloggerBlogBundle:Comment:form.html.twig"));
 
         // line 2
         echo         $this->env->getRuntime('Symfony\Bridge\Twig\Form\TwigRenderer')->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form_start', array("action" => $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("blogger_blog_comment_create", array("blog_id" => $this->getAttribute($this->getAttribute((isset($context["comment"]) ? $context["comment"] : $this->getContext($context, "comment")), "blog", array()), "id", array()))), "method" => "POST", "attr" => array("class" => "blogger")));
@@ -34,10 +34,10 @@ class __TwigTemplate_21d62f404c003bbd72f63b94f87a9dd3b7e2cb8592d6fbfdeb0b9d7c076
 </p>
 ";
         
-        $__internal_a7bde325b847478588b8d4413bdfc183effeac22d6d364ba95f63d03dd132a2e->leave($__internal_a7bde325b847478588b8d4413bdfc183effeac22d6d364ba95f63d03dd132a2e_prof);
+        $__internal_a6afab9ceadb9fb702271a1cb81b1935b3844ca530dfdbceced1f37d97843d83->leave($__internal_a6afab9ceadb9fb702271a1cb81b1935b3844ca530dfdbceced1f37d97843d83_prof);
 
         
-        $__internal_3418f22e3f17f66c954be34ee7ac861ada55f58590f49334b0c84779c146e09a->leave($__internal_3418f22e3f17f66c954be34ee7ac861ada55f58590f49334b0c84779c146e09a_prof);
+        $__internal_7c2c975d4c92fbc046ddf86c84b061feec7ed09e761dbb31355f9a50f86fbf2b->leave($__internal_7c2c975d4c92fbc046ddf86c84b061feec7ed09e761dbb31355f9a50f86fbf2b_prof);
 
     }
 

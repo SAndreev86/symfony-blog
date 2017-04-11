@@ -64,10 +64,10 @@ class Blog extends \Blogger\BlogBundle\Entity\Blog implements \Doctrine\ORM\Prox
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'title', 'author', 'blog', 'image', 'tags', 'comments', 'created', 'updated'];
+            return ['__isInitialized__', 'id', 'title', 'author', 'blog', 'image', 'tags', 'comments', 'created', 'updated', 'slug'];
         }
 
-        return ['__isInitialized__', 'id', 'title', 'author', 'blog', 'image', 'tags', 'comments', 'created', 'updated'];
+        return ['__isInitialized__', 'id', 'title', 'author', 'blog', 'image', 'tags', 'comments', 'created', 'updated', 'slug'];
     }
 
     /**
@@ -351,6 +351,83 @@ class Blog extends \Blogger\BlogBundle\Entity\Blog implements \Doctrine\ORM\Prox
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedValue', []);
 
         return parent::setUpdatedValue();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function __toString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__toString', []);
+
+        return parent::__toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addComment(\Blogger\BlogBundle\Entity\Comment $comment)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addComment', [$comment]);
+
+        return parent::addComment($comment);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function removeComment(\Blogger\BlogBundle\Entity\Comment $comment)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'removeComment', [$comment]);
+
+        return parent::removeComment($comment);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getComments()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getComments', []);
+
+        return parent::getComments();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSlug($slug)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSlug', [$slug]);
+
+        return parent::setSlug($slug);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSlug()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSlug', []);
+
+        return parent::getSlug();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function slugify($text)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'slugify', [$text]);
+
+        return parent::slugify($text);
     }
 
 }

@@ -4,12 +4,12 @@
 namespace Blogger\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
-// src/Blogger/BlogBundle/Entity/Blog.php
 /**
  * @ORM\Entity(repositoryClass="Blogger\BlogBundle\Entity\Repository\BlogRepository")
  * @ORM\Table(name="blog")
- * @ORM\HasLifecycleCallbacks()
+ * @ORM\HasLifecycleCallbacks
  */
 class Blog
 {
@@ -45,7 +45,10 @@ class Blog
      */
     protected $tags;
 
-    protected $comments;
+    /**
+         * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
+         */
+        protected $comments;
 
     /**
      * @ORM\Column(type="datetime")
@@ -74,12 +77,12 @@ class Blog
      *
      * @return Blog
      */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-    
-        return $this;
-    }
+   public function setTitle($title)
+   {
+       $this->title = $title;
+
+       $this->setSlug($this->title);
+   }
 
     /**
      * Get title
@@ -241,10 +244,12 @@ class Blog
 
 
        public function __construct()
-        {
-            $this->setCreated(new \DateTime());
-            $this->setUpdated(new \DateTime());
-        }
+          {
+              $this->comments = new ArrayCollection();
+
+              $this->setCreated(new \DateTime());
+              $this->setUpdated(new \DateTime());
+          }
 
         /**
          * @ORM\PreUpdate
@@ -257,4 +262,99 @@ class Blog
         {
             return $this->getTitle();
         }
+
+    /**
+     * Add comment
+     *
+     * @param \Blogger\BlogBundle\Entity\Comment $comment
+     *
+     * @return Blog
+     */
+    public function addComment(\Blogger\BlogBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+    
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \Blogger\BlogBundle\Entity\Comment $comment
+     */
+    public function removeComment(\Blogger\BlogBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+        /**
+         * @ORM\Column(type="string")
+         */
+        protected $slug;
+
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Blog
+     */
+    public function setSlug($slug)
+    {
+            $this->slug = $this->slugify($slug);
+
+    
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+
+
+    public function slugify($text)
+    {
+        // replace non letter or digits by -
+        $text = preg_replace('#[^\\pL\d]+#u', '-', $text);
+
+        // trim
+        $text = trim($text, '-');
+
+        // transliterate
+        if (function_exists('iconv'))
+        {
+            $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        }
+
+        // lowercase
+        $text = strtolower($text);
+
+        // remove unwanted characters
+        $text = preg_replace('#[^-\w]+#', '', $text);
+
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+
+        return $text;
+    }
 }
